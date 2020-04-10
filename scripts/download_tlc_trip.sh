@@ -30,7 +30,7 @@ function download_data () {
 
 cd ${OUTPUT_DIR}
 
-# Download
+# Download trip data
 BASE_IMAGE_URL="https://s3.amazonaws.com/nyc-tlc/trip+data"
 
 for i in $(seq -f "%02g" 1 12)
@@ -38,6 +38,16 @@ do
   DATA_FILE_NAME="yellow_tripdata_2018-"$i".csv"
   download_data $BASE_IMAGE_URL $DATA_FILE_NAME
 done
+
+# Download Taxi Zone Lookup Table 
+BASE_IMAGE_URL="https://s3.amazonaws.com/nyc-tlc/misc"
+DATA_FILE_NAME="taxi+_zone_lookup.csv"
+download_data $BASE_IMAGE_URL $DATA_FILE_NAME
+
+# Download Taxi Zone Map – Manhattan
+BASE_IMAGE_URL="https://www1.nyc.gov/assets/tlc/images/content/pages/about"
+DATA_FILE_NAME="taxi_zone_map_manhattan.jpg"
+download_data $BASE_IMAGE_URL $DATA_FILE_NAME
 
 echo "Download Finished"
 

@@ -17,7 +17,16 @@ Source of data to be download: https://www1.nyc.gov/site/tlc/about/tlc-trip-reco
    bash scripts/download_tlc_trip.sh ./data
    ```
 
-2. Data Virtulization & Data Cleaning
-   
+2. Preprocessing all data by running command:
 
-3. D
+   ```python
+   python DataPreprocessing.py --month <month of 2018>
+   ```
+   
+3. Merge 6 months data per location, for example
+
+   ```bash
+   cat 2018_004_**.csv > 2018_004.csv
+   ```
+   
+3. Train LSTM model with new data
